@@ -1,0 +1,15 @@
+{
+    "name": "aries/laravelsetting",
+    "description": "Store your custom Settings in database and cache system",
+    "require": {
+        "laravel/laravel": "^5.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohammad Mohammadi",
+            "email": "imohammadd@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
