@@ -32,7 +32,7 @@ class Setting
             }
 
             $setting = Cache::rememberForever('setting_' . $key, function () use ($key) {
-                return SettingModel::where('key', $key)->firstOrFail();
+                return SettingModel::where('key', $key)->firstOrFail()->value;
             });
 
             return $setting->value;
@@ -40,6 +40,17 @@ class Setting
         } catch (\Exception $e) {
             return $default;
         }
+    }
+
+    public function store()
+    {
+        $entry = request()->input('key');
+        $i = 0;
+        foreach($entry as $key => $value) {
+            $this->set($key, $value);
+            $i++;
+        }
+        return $i;
     }
 
 }
