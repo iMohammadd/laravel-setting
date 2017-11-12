@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Setting
 {
+
     public function set($key, $value)
     {
         if (\Cache::has('setting_' . $key)) {
@@ -42,11 +43,10 @@ class Setting
         }
     }
 
-    public function store()
+    public function store($setting)
     {
-        $entry = request()->input('key');
         $i = 0;
-        foreach($entry as $key => $value) {
+        foreach($setting as $key => $value) {
             $this->set($key, $value);
             $i++;
         }
