@@ -9,5 +9,10 @@
             "email": "imohammadd@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Aries\\LaravelSetting\\": "src/"
+        }
+    },
     "minimum-stability": "dev"
 }
