@@ -20,6 +20,13 @@ And add alias to aliases array:
 ]
 ```
 
+And publish vendor
+
+`php artisan vendor:publish`
+
+And migrate database
+`php artisan migrate`
+
 **Usage**
 ```php
 <?php
