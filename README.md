@@ -22,10 +22,13 @@ And add alias to aliases array:
 
 And publish vendor
 
-`php artisan vendor:publish`
+```php
+php artisan vendor:publish```
 
 And migrate database
-`php artisan migrate`
+
+```php
+php artisan migrate```
 
 **Usage**
 ```php
