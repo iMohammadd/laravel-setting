@@ -41,11 +41,18 @@ use Aries\LaravelSetting\Facade\Setting;
 
 class SettingController extends Controller {
     public function index(){
+        #Set Primary Key :
+        Setting::set('key', 'value', true);
+    
         #Set a Setting property:
-        Setting::set('key', 'value');
+        Setting::set('key', 'value', false, false);
         
         #Get a Stored Setting value or pass default value
         $setting['key'] = Setting::get('key', 'default value');
+        
+        
+        #Get All primary Keys
+        $settings = Setting::getPrimary();
     }
     
     public function store(\Request $request){
