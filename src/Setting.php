@@ -44,6 +44,16 @@ class Setting
             return $default;
         }
     }
+    
+    public function getPrimary()
+    {
+        try {
+            return SettingModel::where('is_primary', true)->pluck('id', 'value')->toArray();
+
+        } catch (\Exception $e) {
+            return $default;
+        }
+    }
 
     public function store($setting)
     {
