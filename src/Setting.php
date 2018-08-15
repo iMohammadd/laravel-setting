@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Cache;
 class Setting
 {
 
-    public function set($key, $value)
+    public function set($key, $value, $is_primary = false, $autoload = false)
     {
         if (\Cache::has('setting_' . $key)) {
             Cache::forget('setting_' . $key);
@@ -17,7 +17,9 @@ class Setting
         $setting = SettingModel::updateOrCreate([
             'key' => $key
         ], [
-            'value' => $value
+            'value' => $value,
+            'is_primary' => $is_primary,
+            'autoload' => $autoload,
         ]);
 
         Cache::forever('setting_' . $key, $value);
@@ -37,6 +39,16 @@ class Setting
             });
 
             return $setting->value;
+
+        } catch (\Exception $e) {
+            return $default;
+        }
+    }
+    
+    public function getPrimary()
+    {
+        try {
+            return SettingModel::where('is_primary', true)->pluck('id', 'value')->toArray();
 
         } catch (\Exception $e) {
             return $default;
