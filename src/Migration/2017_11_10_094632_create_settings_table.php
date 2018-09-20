@@ -17,6 +17,8 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->string('key')->unique();
             $table->string('value')->nullable();
+            $table->boolean('is_primary')->default(0);
+            $table->boolean('autoload')->default(0);
             $table->timestamps();
         });
     }
